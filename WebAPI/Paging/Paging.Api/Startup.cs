@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Paging.Api.Models;
+using Paging.Api.Services.BooksRepository;
+using Paging.Api.Services.Interfaces;
 
 namespace Paging.Api
 {
@@ -26,6 +29,8 @@ namespace Paging.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddScoped<IRepository<Book>, BooksRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
