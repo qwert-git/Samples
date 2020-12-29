@@ -1,0 +1,8 @@
+WebAPI/Paging/Paging.Api/obj/
+WebAPI/Paging/Paging.Api/bin/
+WebAPI/Paging/Paging.UnitTests/obj/
+WebAPI/Paging/Paging.UnitTests/bin/
+WebAPI/Paging/Paging.Api/Properties/launchSettings.json
+WebAPI/Paging/Paging.Api/appsettings.Development.json
+.vscode/launch.json
+.vscode/tasks.json
