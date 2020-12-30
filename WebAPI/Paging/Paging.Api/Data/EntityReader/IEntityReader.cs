@@ -1,5 +1,5 @@
 using System.Linq;
-using Paging.Api.Models;
+using Paging.Api.Data.Models;
 
 namespace Paging.Api.Services.EntityReader
 {

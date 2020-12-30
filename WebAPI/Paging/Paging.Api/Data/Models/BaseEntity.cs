@@ -1,6 +1,6 @@
 using System;
 
-namespace Paging.Api.Models
+namespace Paging.Api.Data.Models
 {
     public class BaseEntity
     {
