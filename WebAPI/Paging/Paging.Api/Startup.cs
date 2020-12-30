@@ -1,18 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Paging.Api.Models;
-using Paging.Api.Services.BooksRepository;
-using Paging.Api.Services.Interfaces;
+using Paging.Api.Data;
+using Paging.Api.Services.PagingService;
+using Paging.Api.Services.EntityReader;
 
 namespace Paging.Api
 {
@@ -30,7 +25,10 @@ namespace Paging.Api
         {
             services.AddControllers();
 
-            services.AddScoped<IRepository<Book>, BooksRepository>();
+            services.AddDbContext<ApiContext>(options => options.UseInMemoryDatabase("ApiDatabase"));
+
+            services.AddScoped<IEntityReader<Book>, EntityReader<Book>>();
+            services.AddScoped<IPagingService, ApiPagingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
