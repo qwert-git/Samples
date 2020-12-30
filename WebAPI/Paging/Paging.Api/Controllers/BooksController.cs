@@ -26,7 +26,7 @@ namespace Paging.Api.Controllers
         {
             var booksQuery = _booksReader.Query();
 
-            var result = await _pagingService.GetPagedQuery(booksQuery, parameters.PageNumber, parameters.PageSize).ToListAsync();
+            var result = await _pagingService.GetPagedQuery(booksQuery, new PagingParameters(parameters.PageNumber, parameters.PageSize)).ToListAsync();
 
             return Ok(result);
         }
