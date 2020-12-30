@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Paging.Api.Models;
 using Paging.Api.Data;
 using Paging.Api.Services.PagingService;
+using Paging.Api.Data.Models;
 using Paging.Api.Services.EntityReader;
 
 namespace Paging.Api

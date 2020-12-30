@@ -1,7 +1,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Paging.Api.Models;
+using Paging.Api.Data.Models;
 
 namespace Paging.Api.Data
 {

@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Paging.Api.Models;
+using Paging.Api.Data.Models;
 
 namespace Paging.Api.Data
 {
