@@ -1,17 +1,14 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Auth.API.Services.AuthenticationService;
+using Auth.API.Services.AuthTokenIssuer;
+using Auth.API.Services.RoleManager;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Auth.API
@@ -40,9 +37,9 @@ namespace Auth.API
                         ValidateAudience = true,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = "localhost",
-                        ValidAudience = "localhost",
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("super_secret")),
+                        ValidIssuer = Configuration["Auth:Issuer"],
+                        ValidAudience = Configuration["Auth:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Auth:Secret"])),
                         ClockSkew = TimeSpan.Zero
                     };
                 });
@@ -52,6 +49,10 @@ namespace Auth.API
                 config.AddPolicy("RequreAdmin", policy => policy.RequireRole("Admin"));
                 config.AddPolicy("RequreUser", policy => policy.RequireRole("Admin", "User"));
             });
+
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IRoleManager, RoleManager>();
+            services.AddScoped<IAuthTokenIssuer, AuthTokenIssuer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
