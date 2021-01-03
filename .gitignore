@@ -4,5 +4,9 @@ WebAPI/Paging/Paging.UnitTests/obj/
 WebAPI/Paging/Paging.UnitTests/bin/
 WebAPI/Paging/Paging.Api/Properties/launchSettings.json
 WebAPI/Paging/Paging.Api/appsettings.Development.json
+WebAPI/Auth/Auth.API/obj/
+WebAPI/Auth/Auth.API/bin/
+WebAPI/Auth/Auth.API/Properties/launchSettings.json
+WebAPI/Auth/Auth.API/appsettings.Development.json
 .vscode/launch.json
 .vscode/tasks.json
