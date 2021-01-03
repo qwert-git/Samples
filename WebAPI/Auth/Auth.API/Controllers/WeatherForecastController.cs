@@ -25,7 +25,7 @@ namespace Auth.API.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Policy = "RequreUser")]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
