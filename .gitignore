@@ -8,5 +8,9 @@ WebAPI/Auth/Auth.API/obj/
 WebAPI/Auth/Auth.API/bin/
 WebAPI/Auth/Auth.API/Properties/launchSettings.json
 WebAPI/Auth/Auth.API/appsettings.Development.json
+WebAPI/HostedService/HostedService.API/obj/
+WebAPI/HostedService/HostedService.API/bin/
+WebAPI/HostedService/HostedService.API/Properties/launchSettings.json
+WebAPI/HostedService/HostedService.API/appsettings.Development.json
 .vscode/launch.json
 .vscode/tasks.json
