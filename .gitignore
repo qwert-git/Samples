@@ -12,5 +12,9 @@ WebAPI/HostedService/HostedService.API/obj/
 WebAPI/HostedService/HostedService.API/bin/
 WebAPI/HostedService/HostedService.API/Properties/launchSettings.json
 WebAPI/HostedService/HostedService.API/appsettings.Development.json
+WebAPI/WorkerService/WorkerService.API/obj/
+WebAPI/WorkerService/WorkerService.API/bin/
+WebAPI/WorkerService/WorkerService.API/Properties/launchSettings.json
+WebAPI/WorkerService/WorkerService.API/appsettings.Development.json
 .vscode/launch.json
 .vscode/tasks.json
