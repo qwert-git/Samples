@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using WorkerService.Api.Configuration;
+using WorkerService.Api.Services.QueueMessageService;
 
 namespace WorkerService.Api
 {
@@ -32,6 +27,8 @@ namespace WorkerService.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WorkerService.Api", Version = "v1" });
             });
+
+            services.AddScoped<IQueueMessageService>(ImplementationFactories.QueueMessageService);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
