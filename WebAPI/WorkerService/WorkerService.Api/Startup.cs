@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using WorkerService.Api.Configuration;
+using WorkerService.Api.Services.FileStorageService;
 using WorkerService.Api.Services.QueueMessageService;
 
 namespace WorkerService.Api
@@ -29,6 +30,7 @@ namespace WorkerService.Api
             });
 
             services.AddScoped<IQueueMessageService>(ImplementationFactories.QueueMessageService);
+            services.AddScoped<IFileStorageService>(ImplementationFactories.FileStorageService);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
