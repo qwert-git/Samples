@@ -1,6 +1,8 @@
+using System.Text;
 using System.Threading.Tasks;
-using Microsoft.ServiceBus;
-using Microsoft.ServiceBus.Messaging;
+using Microsoft.Azure.ServiceBus;
+using Newtonsoft.Json;
+using WorkerService.Api.Models;
 
 namespace WorkerService.Api.Services.QueueMessageService
 {
@@ -8,15 +10,18 @@ namespace WorkerService.Api.Services.QueueMessageService
     {
         private readonly QueueClient _queueClient;
 
-        public AzureServiceBusQueueMessageService(NamespaceManager namespaceManager, string queueName)
+        public AzureServiceBusQueueMessageService(QueueClient queueClient)
         {
-            var messagingFactory = MessagingFactory.Create(namespaceManager.Address, namespaceManager.Settings.TokenProvider);
-            _queueClient = messagingFactory.CreateQueueClient(queueName);
+            _queueClient = queueClient;
         }
 
-        public Task EnqueueAsync<T>(T message) where T : class
+        public Task EnqueueAsync<T>(T message) where T : QueueMessageBase
         {
-            return _queueClient.SendAsync(new BrokeredMessage(message));
+            string data = JsonConvert.SerializeObject(message);
+
+            var queueMessage = new Message(Encoding.UTF8.GetBytes(data));
+
+            return _queueClient.SendAsync(queueMessage);
         }
     }
 }
