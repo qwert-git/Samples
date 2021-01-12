@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WorkerService.Api.Models;
-using WorkerService.Api.Services.FileStorageService;
-using WorkerService.Api.Services.QueueMessageService;
+using WorkerService.Core.Models;
+using WorkerService.Core.Services.FileStorageService;
+using WorkerService.Core.Services.QueueMessageService;
 
 namespace WorkerService.Api.Controllers
 {

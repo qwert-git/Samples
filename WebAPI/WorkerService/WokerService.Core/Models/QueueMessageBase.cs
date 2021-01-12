@@ -1,6 +1,6 @@
 using System;
 
-namespace WorkerService.Api.Models
+namespace WorkerService.Core.Models
 {
     public abstract class QueueMessageBase
     {

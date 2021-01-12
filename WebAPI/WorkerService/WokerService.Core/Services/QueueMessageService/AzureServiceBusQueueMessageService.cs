@@ -2,9 +2,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.ServiceBus;
 using Newtonsoft.Json;
-using WorkerService.Api.Models;
+using WorkerService.Core.Models;
 
-namespace WorkerService.Api.Services.QueueMessageService
+namespace WorkerService.Core.Services.QueueMessageService
 {
     public class AzureServiceBusQueueMessageService : IQueueMessageService
     {

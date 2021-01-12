@@ -5,8 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using WorkerService.Api.Configuration;
-using WorkerService.Api.Services.FileStorageService;
-using WorkerService.Api.Services.QueueMessageService;
+using WorkerService.Core.Services.FileStorageService;
+using WorkerService.Core.Services.QueueMessageService;
 
 namespace WorkerService.Api
 {

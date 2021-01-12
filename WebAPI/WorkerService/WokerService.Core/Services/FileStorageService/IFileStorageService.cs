@@ -2,7 +2,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace WorkerService.Api.Services.FileStorageService
+namespace WorkerService.Core.Services.FileStorageService
 {
     public interface IFileStorageService
     {

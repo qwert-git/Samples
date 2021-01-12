@@ -3,8 +3,8 @@ using Azure.Storage.Blobs;
 using Microsoft.Azure.ServiceBus;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WorkerService.Api.Services.FileStorageService;
-using WorkerService.Api.Services.QueueMessageService;
+using WorkerService.Core.Services.FileStorageService;
+using WorkerService.Core.Services.QueueMessageService;
 
 namespace WorkerService.Api.Configuration
 {

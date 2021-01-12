@@ -1,4 +1,4 @@
-namespace WorkerService.Api.Models
+namespace WorkerService.Core.Models
 {
     public class ProcessFileQueueMessage : QueueMessageBase
     {

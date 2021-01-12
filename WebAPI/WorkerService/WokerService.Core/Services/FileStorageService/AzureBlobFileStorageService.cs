@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Azure.Storage.Blobs;
 
-namespace WorkerService.Api.Services.FileStorageService
+namespace WorkerService.Core.Services.FileStorageService
 {
     public class AzureBlobFileStorageService : IFileStorageService
     {

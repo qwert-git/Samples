@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using WorkerService.Api.Models;
+using WorkerService.Core.Models;
 
-namespace WorkerService.Api.Services.QueueMessageService
+namespace WorkerService.Core.Services.QueueMessageService
 {
     public interface IQueueMessageService
     {
