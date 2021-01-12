@@ -1,7 +1,9 @@
 using System;
+using Azure.Storage.Blobs;
+using Microsoft.Azure.ServiceBus;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.ServiceBus;
+using WorkerService.Api.Services.FileStorageService;
 using WorkerService.Api.Services.QueueMessageService;
 
 namespace WorkerService.Api.Configuration
@@ -10,21 +12,28 @@ namespace WorkerService.Api.Configuration
     {
         public static IQueueMessageService QueueMessageService(IServiceProvider serviceProvider)
         {
+            var settings = GetSettings<AzureServiceBusSettings>(serviceProvider, "AzureServiceBus");
+
+            var queue = new QueueClient(settings.ConnectionString, settings.QueueName);
+
+            return new AzureServiceBusQueueMessageService(queue);
+        }
+
+        public static IFileStorageService FileStorageService(IServiceProvider serviceProvider)
+        {
             var configService = serviceProvider.GetRequiredService<IConfiguration>();
+            var blobStorageSettings = GetSettings<AzureBlobStorageSettings>(serviceProvider, "AzureBlobStorage");
 
-            var azureServiceSettings = new AzureServiceBusSettings();
-            configService.Bind("AzureServiceBus", azureServiceSettings);
+            var blobServiceClient = new BlobServiceClient(blobStorageSettings.ConnectionString);
+            var blobContainerClient = blobServiceClient.GetBlobContainerClient(blobStorageSettings.ContainerName);
 
-            var uri = ServiceBusEnvironment.CreateServiceUri(scheme: azureServiceSettings.Scheme, serviceNamespace: azureServiceSettings.Namespace, servicePath: string.Empty);
-            var tP = TokenProvider.CreateSharedAccessSignatureTokenProvider(keyName: azureServiceSettings.AccessKeyName, sharedAccessKey: azureServiceSettings.AccessKey);
-            var namespaceManager = new NamespaceManager(uri, tP);
+            return new AzureBlobFileStorageService(blobContainerClient);
+        }
 
-            if (!namespaceManager.QueueExists(azureServiceSettings.QueueName))
-            {
-                namespaceManager.CreateQueue(azureServiceSettings.QueueName);
-            }
-
-            return new AzureServiceBusQueueMessageService(namespaceManager, azureServiceSettings.QueueName);
+        private static T GetSettings<T>(IServiceProvider serviceProvider, string sectionName) where T : new()
+        {
+            var configService = serviceProvider.GetRequiredService<IConfiguration>();
+            return configService.GetSection(sectionName).Get<T>();
         }
     }
 }
