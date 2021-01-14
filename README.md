@@ -14,3 +14,11 @@ It's easy to test and easy to change the implementation if the data source will 
 There is an example of how to set up authentication and authorization for ASP.NET Core 3.1 without external tools.
 In this sample has been provided AuthTokenIssue which generates bearer token and the app configuration has been set up to validate this token.
 This time integrations tests as Postman collection was provided.
+
+# Worker Sample
+There is worker service that works separatly from the API.
+Were added azure service bus and blob storage providers.
+The idea is: user uploading file to the api and api saves it to the blob storage.
+After thet API adds a message to the azure service bus.
+And worker handle this message and processing file that had been uploaded.
+The file processing missed, because it's out of sample topic.
