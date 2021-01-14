@@ -14,10 +14,10 @@ namespace WorkerService.Api.Controllers
     public class DbContentController : ControllerBase
     {
         private readonly IFileStorageService _fileStorageService;
-        private readonly IQueueMessageService _queueMessageService;
+        private readonly IQueueMessageSender _queueMessageService;
         private readonly ILogger<DbContentController> _logger;
 
-        public DbContentController(IFileStorageService fileStorageService, IQueueMessageService queueMessageService, ILogger<DbContentController> logger)
+        public DbContentController(IFileStorageService fileStorageService, IQueueMessageSender queueMessageService, ILogger<DbContentController> logger)
         {
             _fileStorageService = fileStorageService;
             _queueMessageService = queueMessageService;
