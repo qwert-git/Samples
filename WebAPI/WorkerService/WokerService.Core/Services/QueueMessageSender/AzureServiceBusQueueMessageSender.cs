@@ -1,4 +1,6 @@
+using System;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.ServiceBus;
 using Newtonsoft.Json;
@@ -6,11 +8,11 @@ using WorkerService.Core.Models;
 
 namespace WorkerService.Core.Services.QueueMessageService
 {
-    public class AzureServiceBusQueueMessageService : IQueueMessageService
+    public class AzureServiceBusQueueMessageSender : IQueueMessageService
     {
         private readonly QueueClient _queueClient;
 
-        public AzureServiceBusQueueMessageService(QueueClient queueClient)
+        public AzureServiceBusQueueMessageSender(QueueClient queueClient)
         {
             _queueClient = queueClient;
         }
