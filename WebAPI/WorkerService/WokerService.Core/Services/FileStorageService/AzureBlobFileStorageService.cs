@@ -22,5 +22,16 @@ namespace WorkerService.Core.Services.FileStorageService
 
             return response.Status >= 200 && response.Status < 300;
         }
+
+        public async Task<string> ReadFileAsync(string fileName, CancellationToken ct = default(CancellationToken))
+        {
+            var blobClient = _blobContainer.GetBlobClient(fileName);
+            var blobDownloadInfo = await blobClient.DownloadAsync();
+
+            using (var sr = new StreamReader(blobDownloadInfo.Value.Content))
+            {
+                return await sr.ReadToEndAsync();
+            }
+        }
     }
 }
