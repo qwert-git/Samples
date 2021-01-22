@@ -24,5 +24,9 @@ WebAPI/WorkerService/WokerService.Worker/obj/
 WebAPI/WorkerService/WokerService.Worker/bin/
 WebAPI/WorkerService/WokerService.Worker/Properties/launchSettings.json
 WebAPI/WorkerService/WokerService.Worker/appsettings.Development.json
+WebAPI/ErrorHandling/ErrorHandling.API/obj/
+WebAPI/ErrorHandling/ErrorHandling.API/bin/
 .vscode/launch.json
 .vscode/tasks.json
+WebAPI/ErrorHandling/ErrorHandling.API/Properties/launchSettings.json
+WebAPI/ErrorHandling/ErrorHandling.API/appsettings.Development.json
