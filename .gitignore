@@ -30,3 +30,7 @@ WebAPI/ErrorHandling/ErrorHandling.API/bin/
 .vscode/tasks.json
 WebAPI/ErrorHandling/ErrorHandling.API/Properties/launchSettings.json
 WebAPI/ErrorHandling/ErrorHandling.API/appsettings.Development.json
+DesignPatterns/Prototype/Prototype.Core/bin/
+DesignPatterns/Prototype/Prototype.Core/obj/
+DesignPatterns/Prototype/Prototype.Tests/bin/
+DesignPatterns/Prototype/Prototype.Tests/obj/
