@@ -24,19 +24,24 @@ namespace ErrorHandling.API.Middleware
             }
             catch (Exception ex)
             {
-                _logger.LogError("Something went wrong.", ex);
-
-                int statusCode = (int)HttpStatusCode.InternalServerError;
-                string message = "An unhandled exception occured";
-
-                if (ex is CustomExceptionBase customException)
-                {
-                    statusCode = customException.StatusCode;
-                    message = customException.Message;
-                }
-
-                await context.Response.WriteAsJsonAsync(new { message, statusCode });
+                await HandleExceptionAsync(context, ex);
             }
+        }
+
+        private async Task HandleExceptionAsync(HttpContext context, Exception ex)
+        {
+            _logger.LogError("Something went wrong.", ex);
+
+            int statusCode = (int)HttpStatusCode.InternalServerError;
+            string message = "An unhandled exception occured";
+
+            if (ex is CustomExceptionBase customException)
+            {
+                statusCode = customException.StatusCode;
+                message = customException.Message;
+            }
+
+            await context.Response.WriteAsJsonAsync(new { message, statusCode });
         }
     }
 }
