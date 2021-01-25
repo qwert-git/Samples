@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Command.Core.Services.StockManager
 {
-    public class InMemotyStockManagerService : IStockManagerService
+    public class InMemoryStockManagerService : IStockManagerService
     {
         private ConcurrentDictionary<string, int> _items = new ConcurrentDictionary<string, int>();
 
-        public InMemotyStockManagerService()
+        public InMemoryStockManagerService()
         {
             _items.TryAdd("Item1", 1);
             _items.TryAdd("Item2", 2);

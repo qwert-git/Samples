@@ -17,7 +17,7 @@ namespace Command.Core.Commands
             _item = item;
         }
 
-        public bool CanExecute() => _stockManager.GetItemsCountLeft(_item.Name) > _item.Amount;
+        public bool CanExecute() => _stockManager.GetItemsCountLeft(_item.Name) >= _item.Amount;
 
         public void Execute()
         {

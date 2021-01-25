@@ -20,11 +20,11 @@ namespace Command.Core.Commands
 
         public void Execute()
         {
-            foreach (var item in _cart.Items)
+            for (int i = 0; i < _cart.Items.Count(); i++)
             {
+                var item = _cart.Items.ElementAt(i);
                 _stockManager.IncreaseItemsCount(item.Name, item.Amount);
                 _cart.Items.Remove(item);
-
             }
 
             Console.WriteLine($"Cart has been cleaned. Total cart price: {_cart.TotalPrice}");
