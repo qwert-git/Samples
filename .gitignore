@@ -38,3 +38,5 @@ DesignPatterns/Strategy/Strategy.Core/bin/
 DesignPatterns/Strategy/Strategy.Core/obj/
 DesignPatterns/Strategy/Strategy.Tests/bin/
 DesignPatterns/Strategy/Strategy.Tests/obj/
+DesignPatterns/Command/Command.Core/obj/
+DesignPatterns/Command/Command.Core/bin/
