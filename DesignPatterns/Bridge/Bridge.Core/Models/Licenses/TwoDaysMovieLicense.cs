@@ -1,13 +1,16 @@
 using System;
+using Bridge.Core.Models.Discounts;
 
 namespace Bridge.Core.Models
 {
-    public class TwoDaysMovieLicense : MovieLicense
+    public class TwoDaysMovieLicense : MovieLicenseBase
     {
-        public TwoDaysMovieLicense(string movie, DateTime purchaseTime) : base(movie, purchaseTime) { }
+        public TwoDaysMovieLicense(string movie, DateTime purchaseTime, DiscountBase discount) : base(movie, purchaseTime, discount)
+        {
+        }
 
         public override DateTime? GetExpirationDate() => PurchaseTime.AddDays(2);
 
-        public override decimal GetPrice() => 4;
+        protected override decimal GetPriceCore() => 4;
     }
 }

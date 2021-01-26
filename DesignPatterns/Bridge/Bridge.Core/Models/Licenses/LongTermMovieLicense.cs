@@ -1,13 +1,16 @@
 using System;
+using Bridge.Core.Models.Discounts;
 
 namespace Bridge.Core.Models
 {
-    public class LongTermMovieLicense : MovieLicense
+    public class LongTermMovieLicense : MovieLicenseBase
     {
-        public LongTermMovieLicense(string movie, DateTime purchaseTime) : base(movie, purchaseTime) { }
+        public LongTermMovieLicense(string movie, DateTime purchaseTime, DiscountBase discount) : base(movie, purchaseTime, discount)
+        {
+        }
 
         public override DateTime? GetExpirationDate() => null;
 
-        public override decimal GetPrice() => 8;
+        protected override decimal GetPriceCore() => 8;
     }
 }
