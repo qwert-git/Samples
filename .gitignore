@@ -42,3 +42,7 @@ DesignPatterns/Command/Command.Core/obj/
 DesignPatterns/Command/Command.Core/bin/
 DesignPatterns/Command/Command.Tests/obj/
 DesignPatterns/Command/Command.Tests/bin/
+DesignPatterns/Bridge/Bridge.Core/obj/
+DesignPatterns/Bridge/Bridge.Core/bin/
+DesignPatterns/Bridge/Bridge.Tests/obj/
+DesignPatterns/Bridge/Bridge.Tests/bin/
