@@ -26,7 +26,33 @@ namespace Auth.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<ConsoleWriteMiddleware>();
+
+            services.AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.RequireHttpsMetadata = false;
+                    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = Configuration["Auth:Issuer"],
+                        ValidAudience = Configuration["Auth:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Auth:Secret"])),
+                        ClockSkew = TimeSpan.Zero
+                    };
+                });
+
+            services.AddAuthorization(config =>
+            {
+                config.AddPolicy("RequreAdmin", policy => policy.RequireRole("Admin"));
+                config.AddPolicy("RequreUser", policy => policy.RequireRole("Admin", "User"));
+            });
+
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IRoleManager, RoleManager>();
+            services.AddScoped<IAuthTokenIssuer, AuthTokenIssuer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,10 +62,13 @@ namespace Auth.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            
-            app.UseMiddleware<ConsoleWriteMiddleware>();
+
+            app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
